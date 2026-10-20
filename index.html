@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang='ru'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Don't Look Down — Alpine Asset Kit</title>
+<style>
+:root{--bg:#0e1116;--panel:#161b22;--line:#232a33;--fg:#e6edf3;--mut:#8b96a5;
+--accent:#f0803c;--accent2:#4a9eda}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+font:15px/1.55 -apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif}
+header{padding:44px 32px 28px;border-bottom:1px solid var(--line);
+background:radial-gradient(1200px 400px at 20% -10%,#1d2733 0%,transparent 70%)}
+h1{margin:0 0 8px;font-size:30px;letter-spacing:-.4px}
+h1 span{color:var(--accent)}
+.sub{color:var(--mut);max-width:820px}
+.bar{padding:14px 32px;border-bottom:1px solid var(--line);position:sticky;top:0;
+background:rgba(14,17,22,.92);backdrop-filter:blur(8px);display:flex;gap:8px;
+flex-wrap:wrap;z-index:5}
+.chip{background:var(--panel);border:1px solid var(--line);color:var(--mut);
+padding:6px 13px;border-radius:999px;font-size:13px;cursor:pointer;
+transition:.15s;user-select:none}
+.chip:hover{border-color:#38414d;color:var(--fg)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#12161b;font-weight:600}
+main{padding:26px 32px 64px;max-width:1500px;margin:0 auto}
+.group{margin:34px 0 18px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+color:var(--mut);border-bottom:1px solid var(--line);padding-bottom:9px}
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+overflow:hidden;display:flex;flex-direction:column;transition:.18s}
+.card:hover{border-color:#3a444f;transform:translateY(-2px)}
+.card.hide{display:none}
+.shot{position:relative;background:#0a0d11;cursor:zoom-in}
+.shot img{display:block;width:100%;height:auto}
+.tag{position:absolute;left:10px;top:10px;background:rgba(10,13,17,.78);
+border:1px solid var(--line);border-radius:7px;padding:3px 9px;font-size:11.5px;
+color:var(--mut);letter-spacing:.04em}
+.meta{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px;flex:1}
+.title{font-size:17px;font-weight:650;letter-spacing:-.2px}
+.title small{color:var(--mut);font-weight:400;font-size:13px;margin-left:6px}
+.desc{color:var(--mut);font-size:13.5px}
+.stats{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
+.pill{background:#10151b;border:1px solid var(--line);border-radius:6px;
+padding:3px 8px;font-size:11.5px;color:var(--mut)}
+.pill b{color:var(--fg);font-weight:600}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.links a{color:var(--accent2);text-decoration:none;font-size:12.5px;
+border:1px solid var(--line);border-radius:6px;padding:4px 9px}
+.links a:hover{border-color:var(--accent2)}
+.hero{margin:26px 32px 0;max-width:1500px;border:1px solid var(--line);
+border-radius:14px;overflow:hidden;background:var(--panel)}
+.hero img{display:block;width:100%;height:auto}
+.hero figcaption{padding:11px 16px;color:var(--mut);font-size:13px}
+footer{padding:26px 32px 50px;color:var(--mut);font-size:12.5px;
+border-top:1px solid var(--line)}
+.lightbox{position:fixed;inset:0;background:rgba(6,8,11,.94);display:none;
+align-items:center;justify-content:center;z-index:50;padding:26px;cursor:zoom-out}
+.lightbox.on{display:flex}
+.lightbox img{max-width:100%;max-height:100%;border-radius:10px}
+.lb-cap{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:var(--mut)}
+@media(max-width:640px){header{padding:30px 18px 20px}main{padding:18px 14px 50px}
+.bar{padding:10px 14px}.hero{margin:18px 14px 0}}
+</style></head><body>
+<header><h1>Don't Look <span>Down</span> — альпинистский набор ассетов</h1><div class='sub'>13 ассетов: 11 единиц снаряжения и 2 персонажа, для Unity 6 (URP): снаряжение, железо и экипировка. Стиль — детализированный medium poly в реальном масштабе (1 ед. = 1 м), плоские PBR-материалы без текстур, экспорт в FBX. Общая полигональность ≈ 157 000 треугольников.</div></header>
+<div class='bar'>
+<span class='chip on' data-f='Characters'>Characters</span>
+<span class='chip on' data-f='Equipment'>Equipment</span>
+<span class='chip on' data-f='Hardware'>Hardware</span>
+</div>
+<figure class='hero'><img src='img/kit_overview.webp' alt='kit overview'><figcaption>Все 13 ассетов одним рендером (единый риг, единая экспозиция, view transform Khronos PBR Neutral) — персонажи, снаряжение и железо читаются как один набор.</figcaption></figure>
+<section class='group-block' data-group='Characters'><div class='group'>Characters</div><div class='grid'>
+<article class='card' data-group='Characters'><div class='shot'><span class='tag'>3/4 view</span><img src='img/character_hero.webp' data-full='img/character_hero.webp' data-cap='Player character — 3/4 view' loading='lazy' alt='Player character 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/character_sheet.webp' data-full='img/character_sheet.webp' data-cap='Player character — 4-view sheet' loading='lazy' alt='Player character 4-view sheet'></div><div class='meta'><div class='title'>Player character<small>character</small></div><p class='desc'>Mountaineer in a red-orange hardshell, black alpine harness, white vented helmet and a 30 L pack. Rigged with 22 bones using Unity Humanoid names and explicit per-vertex weights.</p><p class='desc'>Skinned mesh + armature in the FBX. Rest pose is an A-pose.</p><div class='stats'><span class='pill'>три <b>15,184</b></span><span class='pill'>размер <b>1.775 m tall (7.5 heads)</b></span></div><div class='links'><a href='downloads/character.fbx' download>FBX (Unity)</a></div></div></article>
+<article class='card' data-group='Characters'><div class='shot'><span class='tag'>3/4 view</span><img src='img/character_guide_hero.webp' data-full='img/character_guide_hero.webp' data-cap='Mountain guide — 3/4 view' loading='lazy' alt='Mountain guide 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/character_guide_sheet.webp' data-full='img/character_guide_sheet.webp' data-cap='Mountain guide — 4-view sheet' loading='lazy' alt='Mountain guide 4-view sheet'></div><div class='meta'><div class='title'>Mountain guide<small>character_guide</small></div><p class='desc'>Second character, clearly distinct: deep blue shell with yellow shoulder yokes, yellow vented helmet, grey 45 L expedition pack with an ice axe strapped to the side.</p><p class='desc'>Skinned mesh + armature in the FBX. Rest pose is an A-pose.</p><div class='stats'><span class='pill'>три <b>15,276</b></span><span class='pill'>размер <b>1.720 m tall (7.5 heads)</b></span></div><div class='links'><a href='downloads/character_guide.fbx' download>FBX (Unity)</a></div></div></article>
+</div></section>
+<section class='group-block' data-group='Equipment'><div class='group'>Equipment</div><div class='grid'>
+<article class='card' data-group='Equipment'><div class='shot'><span class='tag'>3/4 view</span><img src='img/backpack_hero.webp' data-full='img/backpack_hero.webp' data-cap='40 L alpine pack — 3/4 view' loading='lazy' alt='40 L alpine pack 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/backpack_sheet.webp' data-full='img/backpack_sheet.webp' data-cap='40 L alpine pack — 4-view sheet' loading='lazy' alt='40 L alpine pack 4-view sheet'></div><div class='meta'><div class='title'>40 L alpine pack<small>backpack</small></div><p class='desc'>Loaded alpine pack: lid with zip pocket, front bungee panel with round lacing, shoulder harness, padded hip belt with zip pockets, side compression straps and ice-axe straps.</p><div class='stats'><span class='pill'>три <b>19,192</b></span><span class='pill'>размер <b>390 x 301 x 754 mm</b></span></div><div class='links'><a href='downloads/backpack.fbx' download>FBX (Unity)</a></div></div></article>
+<article class='card' data-group='Equipment'><div class='shot'><span class='tag'>3/4 view</span><img src='img/harness_hero.webp' data-full='img/harness_hero.webp' data-cap='Alpine harness — 3/4 view' loading='lazy' alt='Alpine harness 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/harness_sheet.webp' data-full='img/harness_sheet.webp' data-cap='Alpine harness — 4-view sheet' loading='lazy' alt='Alpine harness 4-view sheet'></div><div class='meta'><div class='title'>Alpine harness<small>harness</small></div><p class='desc'>Padded harness with waist belt, central belay loop, two padded leg loops on adjustable risers, four gear loops and three cam buckles. Laid out flat.</p><div class='stats'><span class='pill'>три <b>12,616</b></span><span class='pill'>размер <b>belt 75 cm of webbing</b></span></div><div class='links'><a href='downloads/harness.fbx' download>FBX (Unity)</a></div></div></article>
+<article class='card' data-group='Equipment'><div class='shot'><span class='tag'>3/4 view</span><img src='img/helmet_hero.webp' data-full='img/helmet_hero.webp' data-cap='Climbing helmet + headlamp — 3/4 view' loading='lazy' alt='Climbing helmet + headlamp 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/helmet_sheet.webp' data-full='img/helmet_sheet.webp' data-cap='Climbing helmet + headlamp — 4-view sheet' loading='lazy' alt='Climbing helmet + headlamp 4-view sheet'></div><div class='meta'><div class='title'>Climbing helmet + headlamp<small>helmet</small></div><p class='desc'>EN 12492 style vented shell with seven cut-through vents, chin strap with buckle, adjustable rear dial, EPS liner and a clipped headlamp with a faintly emissive lens.</p><div class='stats'><span class='pill'>три <b>11,244</b></span><span class='pill'>размер <b>258 x 245 x 150 mm</b></span></div><div class='links'><a href='downloads/helmet.fbx' download>FBX (Unity)</a></div></div></article>
+<article class='card' data-group='Equipment'><div class='shot'><span class='tag'>3/4 view</span><img src='img/boots_hero.webp' data-full='img/boots_hero.webp' data-cap='Mountaineering boots (pair) — 3/4 view' loading='lazy' alt='Mountaineering boots (pair) 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/boots_sheet.webp' data-full='img/boots_sheet.webp' data-cap='Mountaineering boots (pair) — 4-view sheet' loading='lazy' alt='Mountaineering boots (pair) 4-view sheet'></div><div class='meta'><div class='title'>Mountaineering boots (pair)<small>boots</small></div><p class='desc'>Leather uppers with a toe box, rubber rand, 30 lugs on the sole, crampon welts, hooks, laces, padded cuff and a red pull tab.</p><div class='stats'><span class='pill'>три <b>13,644</b></span><span class='pill'>размер <b>308 mm long, 141 mm cuff</b></span></div><div class='links'><a href='downloads/boots.fbx' download>FBX (Unity)</a></div></div></article>
+<article class='card' data-group='Equipment'><div class='shot'><span class='tag'>3/4 view</span><img src='img/crampons_hero.webp' data-full='img/crampons_hero.webp' data-cap='12-point crampons (pair) — 3/4 view' loading='lazy' alt='12-point crampons (pair) 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/crampons_sheet.webp' data-full='img/crampons_sheet.webp' data-cap='12-point crampons (pair) — 4-view sheet' loading='lazy' alt='12-point crampons (pair) 4-view sheet'></div><div class='meta'><div class='title'>12-point crampons (pair)<small>crampons</small></div><p class='desc'>Automatic crampons: eight front points in two rows, four vertical points, two heel points, chromoly toe bail, heel lever, ankle strap and anti-balling plates.</p><div class='stats'><span class='pill'>три <b>11,360</b></span><span class='pill'>размер <b>256 x 120 x 52 mm</b></span></div><div class='links'><a href='downloads/crampons.fbx' download>FBX (Unity)</a></div></div></article>
+<article class='card' data-group='Equipment'><div class='shot'><span class='tag'>3/4 view</span><img src='img/ice_axe_hero.webp' data-full='img/ice_axe_hero.webp' data-cap='Technical ice axe — 3/4 view' loading='lazy' alt='Technical ice axe 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/ice_axe_sheet.webp' data-full='img/ice_axe_sheet.webp' data-cap='Technical ice axe — 4-view sheet' loading='lazy' alt='Technical ice axe 4-view sheet'></div><div class='meta'><div class='title'>Technical ice axe<small>ice_axe</small></div><p class='desc'>Modern mountaineering axe: 300 mm curved steel pick, adze, trigger lever, tapered shaft, ribbed rubber grip and a wrist leash.</p><div class='stats'><span class='pill'>три <b>9,944</b></span><span class='pill'>размер <b>551 mm long</b></span></div><div class='links'><a href='downloads/ice_axe.fbx' download>FBX (Unity)</a></div></div></article>
+<article class='card' data-group='Equipment'><div class='shot'><span class='tag'>3/4 view</span><img src='img/rope_coil_hero.webp' data-full='img/rope_coil_hero.webp' data-cap='Dynamic rope coil — 3/4 view' loading='lazy' alt='Dynamic rope coil 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/rope_coil_sheet.webp' data-full='img/rope_coil_sheet.webp' data-cap='Dynamic rope coil — 4-view sheet' loading='lazy' alt='Dynamic rope coil 4-view sheet'></div><div class='meta'><div class='title'>Dynamic rope coil<small>rope_coil</small></div><p class='desc'>9.8 mm single rope, ~10.9 m, kernmantle construction. The cut end shows the sheath cut back with the braided core exposed.</p><div class='stats'><span class='pill'>три <b>12,840</b></span><span class='pill'>размер <b>coil 421 mm across, 73 mm tall</b></span></div><div class='links'><a href='downloads/rope_coil.fbx' download>FBX (Unity)</a></div></div></article>
+</div></section>
+<section class='group-block' data-group='Hardware'><div class='group'>Hardware</div><div class='grid'>
+<article class='card' data-group='Hardware'><div class='shot'><span class='tag'>3/4 view</span><img src='img/carabiner_hero.webp' data-full='img/carabiner_hero.webp' data-cap='Carabiners (HMS + offset D) — 3/4 view' loading='lazy' alt='Carabiners (HMS + offset D) 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/carabiner_sheet.webp' data-full='img/carabiner_sheet.webp' data-cap='Carabiners (HMS + offset D) — 4-view sheet' loading='lazy' alt='Carabiners (HMS + offset D) 4-view sheet'></div><div class='meta'><div class='title'>Carabiners (HMS + offset D)<small>carabiner</small></div><p class='desc'>A 12 mm HMS screwgate and a 10 mm asymmetric locking biner with a bent spine, knurled lock sleeves and forged lugs.</p><div class='stats'><span class='pill'>три <b>5,116</b></span><span class='pill'>размер <b>120 x 75 mm and 110 x 64 mm</b></span></div><div class='links'><a href='downloads/carabiner.fbx' download>FBX (Unity)</a></div></div></article>
+<article class='card' data-group='Hardware'><div class='shot'><span class='tag'>3/4 view</span><img src='img/belay_device_hero.webp' data-full='img/belay_device_hero.webp' data-cap='Belay device + pulley — 3/4 view' loading='lazy' alt='Belay device + pulley 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/belay_device_sheet.webp' data-full='img/belay_device_sheet.webp' data-cap='Belay device + pulley — 4-view sheet' loading='lazy' alt='Belay device + pulley 4-view sheet'></div><div class='meta'><div class='title'>Belay device + pulley<small>belay_device</small></div><p class='desc'>Assisted-braking device with a real rope channel, a 10-tooth cam visible through the side plate window, folding handle and lanyard; plus a plate pulley with two V-grooved sheaves.</p><div class='stats'><span class='pill'>три <b>6,472</b></span><span class='pill'>размер <b>113 mm device, 57 mm pulley</b></span></div><div class='links'><a href='downloads/belay_device.fbx' download>FBX (Unity)</a></div></div></article>
+<article class='card' data-group='Hardware'><div class='shot'><span class='tag'>3/4 view</span><img src='img/protection_set_hero.webp' data-full='img/protection_set_hero.webp' data-cap='Protection set — 3/4 view' loading='lazy' alt='Protection set 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/protection_set_sheet.webp' data-full='img/protection_set_sheet.webp' data-cap='Protection set — 4-view sheet' loading='lazy' alt='Protection set 4-view sheet'></div><div class='meta'><div class='title'>Protection set<small>protection_set</small></div><p class='desc'>Three-lobe camming device with three different-sized shoes on visible axles, hexcentric nut, quickdraw with a doubled dogbone sling, and a glue-in bolt hanger with a real hole.</p><div class='stats'><span class='pill'>три <b>12,896</b></span><span class='pill'>размер <b>95 / 85 / 110 / 83 mm pieces</b></span></div><div class='links'><a href='downloads/protection_set.fbx' download>FBX (Unity)</a></div></div></article>
+<article class='card' data-group='Hardware'><div class='shot'><span class='tag'>3/4 view</span><img src='img/glacier_safety_hero.webp' data-full='img/glacier_safety_hero.webp' data-cap='Glacier safety gear — 3/4 view' loading='lazy' alt='Glacier safety gear 3/4 view'></div><div class='shot'><span class='tag'>4-view sheet</span><img src='img/glacier_safety_sheet.webp' data-full='img/glacier_safety_sheet.webp' data-cap='Glacier safety gear — 4-view sheet' loading='lazy' alt='Glacier safety gear 4-view sheet'></div><div class='meta'><div class='title'>Glacier safety gear<small>glacier_safety</small></div><p class='desc'>Ice screw standing in the foreground with a helical thread, hanger plate and T-handle; an aluminium snow shovel with a D-grip; a three-section avalanche probe with a steel tip.</p><div class='stats'><span class='pill'>три <b>10,604</b></span><span class='pill'>размер <b>193 mm screw, 900 mm probe</b></span></div><div class='links'><a href='downloads/glacier_safety.fbx' download>FBX (Unity)</a></div></div></article>
+</div></section>
+<footer>Ассеты собраны в Blender 5.2 для Unity 6 (URP) и выгружены в FBX (Y-up, метры, применённые трансформации). Персонажи скелетные: 22 кости с именами Unity Humanoid. Материалы плоские PBR — metallic/smoothness перенесите в URP/Lit по таблице стиля. Клик по картинке — увеличение, FBX качается кнопкой под описанием.</footer>
+<div class='lightbox'><img src='' alt=''><div class='lb-cap'></div></div>
+<script>
+const chips=[...document.querySelectorAll('.chip')];
+chips.forEach(c=>c.addEventListener('click',()=>{
+  c.classList.toggle('on');
+  const on=[...chips].filter(x=>x.classList.contains('on')).map(x=>x.dataset.f);
+  document.querySelectorAll('.card').forEach(card=>{
+    const g=card.dataset.group;
+    card.classList.toggle('hide', on.length>0 && !on.includes(g));
+  });
+  document.querySelectorAll('.group-block').forEach(sec=>{
+    const visible=[...sec.querySelectorAll('.card')].some(c=>!c.classList.contains('hide'));
+    sec.style.display=visible?'':'none';
+  });
+}));
+const lb=document.querySelector('.lightbox');
+document.querySelectorAll('.shot img').forEach(im=>im.addEventListener('click',e=>{
+  e.stopPropagation();
+  lb.querySelector('img').src=im.getAttribute('data-full')||im.src;
+  lb.querySelector('.lb-cap').textContent=im.getAttribute('data-cap')||'';
+  lb.classList.add('on');
+}));
+lb.addEventListener('click',()=>lb.classList.remove('on'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on');});
+</script></body></html>
